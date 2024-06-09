@@ -3,10 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.believesun.mysqltrain.mapper.LoginMapper">
-    <select id="selectUserByUsername" resultType="user">
+    <resultMap id="userMapper" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="name"/>
+        <result property="password" column="password" />
+    </resultMap>
+    <select id="selectUserByUsername" resultType="user" resultMap="userMapper">
         SELECT id, name, password FROM admin WHERE name = #{username}
         UNION ALL
         SELECT id, name, password FROM reader WHERE name = #{username};
-
     </select>
+
 </mapper>

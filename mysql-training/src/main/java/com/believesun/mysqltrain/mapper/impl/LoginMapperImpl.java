@@ -6,12 +6,12 @@ import com.believesun.mysqltrain.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 
 public class LoginMapperImpl implements LoginMapper {
-
+    private static final SqlSession sqlSession = SqlSessionUtil.openSession();
+    private static final LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
     @Override
     public User selectUserByUsername(String username) {
-        SqlSession sqlSession = SqlSessionUtil.openSession();
-        LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
         User user = mapper.selectUserByUsername(username);
         return user;
     }
+
 }
