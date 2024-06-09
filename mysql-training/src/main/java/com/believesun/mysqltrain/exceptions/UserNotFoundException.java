@@ -1,2 +1,11 @@
-package com.believesun.mysqltrain.exceptions;public class UserNotFoundException {
+package com.believesun.mysqltrain.exceptions;
+
+public class UserNotFoundException extends Exception{
+    public UserNotFoundException() {
+        super();
+    }
+
+    public UserNotFoundException(String message) {
+        super(message);
+    }
 }

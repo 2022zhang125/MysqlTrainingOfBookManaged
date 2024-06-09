@@ -1,4 +1,4 @@
-package com.hbsfdxwlxy.competition.utils;
+package com.believesun.mysqltrain.utils;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
+
 /**
  * MyBatis工具类，用于控制SqlSession的获取以及控制事务
  * @author BelieveSun
