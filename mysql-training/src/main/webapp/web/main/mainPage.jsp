@@ -29,7 +29,7 @@
           window.location.href = "./usermanaged/add_reader.jsp";
           break;
         case "修改读者":
-          window.location.href = "edit_reader.html";
+          window.location.href = "./usermanaged/edit_reader.jsp";
           break;
         case "删除读者":
           window.location.href = "delete_reader.html";

@@ -6,4 +6,5 @@ public interface ReaderManagedMapper {
     String selectTypeByTypeId(Integer typeId);
 
     int insertReader(Reader reader);
+    Reader selectReaderByNo(String no);
 }

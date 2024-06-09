@@ -23,4 +23,12 @@ public class ReaderManagedMapperImpl implements ReaderManagedMapper {/*
         int count = mapper.insertReader(reader);
         return count;
     }
+
+    @Override
+    public Reader selectReaderByNo(String no) {
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        ReaderManagedMapper mapper = sqlSession.getMapper(ReaderManagedMapper.class);
+        Reader reader = mapper.selectReaderByNo(no);
+        return reader;
+    }
 }

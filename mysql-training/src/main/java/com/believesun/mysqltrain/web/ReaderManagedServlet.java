@@ -31,6 +31,10 @@ public class ReaderManagedServlet extends HttpServlet {
                 // 跳转到successAdd界面
                 response.sendRedirect(request.getContextPath()+"/web/main/usermanaged/success/successAdd.jsp");
                 break;
+            case "/edit/*":
+                // 先查找
+                Boolean flag = readerManaged.editReader(request,response);
+                // 再更新
             default:
                 throw new IllegalStateException("Unexpected value: " + pathValue);
         }

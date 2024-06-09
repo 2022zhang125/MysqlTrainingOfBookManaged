@@ -6,4 +6,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public interface ReaderManagedService {
     Boolean addReader(HttpServletRequest request, HttpServletResponse response) throws ReaderAddErrorException;
+
+    Boolean editReader(HttpServletRequest request, HttpServletResponse response);
 }

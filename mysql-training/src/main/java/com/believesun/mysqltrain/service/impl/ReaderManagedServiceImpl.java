@@ -14,6 +14,14 @@ import java.util.Map;
 
 public class ReaderManagedServiceImpl implements ReaderManagedService {
     private static final ReaderManagedMapper readerManaged = new ReaderManagedMapperImpl();
+
+    /**
+     * 添加用户方法
+     * @param request 请求
+     * @param response 响应
+     * @return 是否添加成功
+     * @throws ReaderAddErrorException 添加失败异常
+     */
     @Override
     public Boolean addReader(HttpServletRequest request, HttpServletResponse response) throws ReaderAddErrorException {
         // 开启事务
@@ -48,6 +56,19 @@ public class ReaderManagedServiceImpl implements ReaderManagedService {
             throw new ReaderAddErrorException("用户新增错误");
         }
         // 事务提交
+        sqlSession.commit();
+        SqlSessionUtil.close(sqlSession);
+        return true;
+    }
+
+    @Override
+    public Boolean editReader(HttpServletRequest request, HttpServletResponse response) {
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+
+        // 获取读者编号
+        String readerNo = request.getParameter("readerNo");
+        System.out.println(readerNo);
+
         sqlSession.commit();
         SqlSessionUtil.close(sqlSession);
         return true;

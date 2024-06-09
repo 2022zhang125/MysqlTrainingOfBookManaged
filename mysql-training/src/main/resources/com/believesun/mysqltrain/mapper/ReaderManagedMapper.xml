@@ -3,16 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.believesun.mysqltrain.mapper.ReaderManagedMapper">
-    <!--<resultMap id="readerMap" type="reader">
+    <resultMap id="readerMap" type="reader">
         <id property="id" column="id" />
         <result property="rTypeId" column="rtype_id" />
         <result property="nowBorrowNum" column="now_borrow_num" />
         <result property="historyBorrowNum" column="history_borrow_num" />
-    </resultMap>-->
+    </resultMap>
     <select id="selectTypeByTypeId" resultType="String">
         select type from read_type where id = #{typeId}
     </select>
     <insert id="insertReader">
         insert into reader values(#{id},#{rTypeId},#{no},#{name},#{password},#{sex},#{dept},#{type},#{nowBorrowNum},#{historyBorrowNum})
     </insert>
+    <select id="selectReaderByNo" resultType="reader" resultMap="readerMap">
+        select * from reader where no = #{readerNo}
+    </select>
 </mapper>
