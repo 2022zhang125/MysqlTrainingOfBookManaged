@@ -18,4 +18,7 @@
     <select id="selectReaderByNo" resultType="reader" resultMap="readerMap">
         select * from reader where no = #{readerNo}
     </select>
+    <select id="selectTypeIdByType" resultType="Integer">
+        select id from read_type where type = #{type}
+    </select>
 </mapper>

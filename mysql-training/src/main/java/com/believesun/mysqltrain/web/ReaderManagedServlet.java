@@ -1,5 +1,6 @@
 package com.believesun.mysqltrain.web;
 
+import ch.qos.logback.core.LogbackException;
 import com.believesun.mysqltrain.exceptions.ReaderAddErrorException;
 import com.believesun.mysqltrain.service.impl.ReaderManagedServiceImpl;
 import jakarta.servlet.ServletException;
@@ -14,15 +15,14 @@ import java.io.IOException;
 public class ReaderManagedServlet extends HttpServlet {
     private static final ReaderManagedServiceImpl readerManaged = new ReaderManagedServiceImpl();
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*System.out.println(request.getPathInfo());*/
         // 获取进行的操作
         String pathValue = request.getPathInfo();
         switch (pathValue){
             case "/add":
                 try {
-                    Boolean flag = readerManaged.addReader(request,response);
+                    readerManaged.addReader(request,response);
                 } catch (ReaderAddErrorException e) {
                     // 用户新增错误,重定向到用户新增错误页面
                     response.sendRedirect(request.getContextPath()+"/web/error/ReaderAddErrorPage.jsp");
@@ -31,10 +31,13 @@ public class ReaderManagedServlet extends HttpServlet {
                 // 跳转到successAdd界面
                 response.sendRedirect(request.getContextPath()+"/web/main/usermanaged/success/successAdd.jsp");
                 break;
-            case "/edit/*":
+
+            case "/edit":
                 // 先查找
-                Boolean flag = readerManaged.editReader(request,response);
+                readerManaged.editReader(request,response);
                 // 再更新
+                break;
+
             default:
                 throw new IllegalStateException("Unexpected value: " + pathValue);
         }

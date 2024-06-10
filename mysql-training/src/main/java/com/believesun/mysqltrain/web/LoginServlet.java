@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import javax.swing.*;
 import java.io.IOException;
 
 @WebServlet("/login")
@@ -24,8 +23,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         // 验证账户是否存在
-        /*Boolean flag = null;*/
-        User user = new User();
+        User user = null;
         try {
             user = loginService.isUsername(username);
             // 判断密码是否正确

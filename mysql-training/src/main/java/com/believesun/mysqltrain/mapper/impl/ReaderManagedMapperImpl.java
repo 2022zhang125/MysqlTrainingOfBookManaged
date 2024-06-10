@@ -5,9 +5,7 @@ import com.believesun.mysqltrain.pojo.Reader;
 import com.believesun.mysqltrain.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 
-public class ReaderManagedMapperImpl implements ReaderManagedMapper {/*
-    private static final SqlSession sqlsession = SqlSessionUtil.openSession();
-    private static final ReaderManagedMapper mapper = sqlsession.getMapper(ReaderManagedMapper.class);*/
+public class ReaderManagedMapperImpl implements ReaderManagedMapper {
     @Override
     public String selectTypeByTypeId(Integer typeId) {
         SqlSession sqlSession = SqlSessionUtil.openSession();
@@ -30,5 +28,13 @@ public class ReaderManagedMapperImpl implements ReaderManagedMapper {/*
         ReaderManagedMapper mapper = sqlSession.getMapper(ReaderManagedMapper.class);
         Reader reader = mapper.selectReaderByNo(no);
         return reader;
+    }
+
+    @Override
+    public Integer selectTypeIdByType(String type) {
+        SqlSession sqlSession = SqlSessionUtil.openSession();
+        ReaderManagedMapper mapper = sqlSession.getMapper(ReaderManagedMapper.class);
+        Integer integer = mapper.selectTypeIdByType(type);
+        return integer;
     }
 }
